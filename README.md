@@ -6,7 +6,7 @@ An interactive and fully responsive **Stone, Paper & Scissors** (Rock-Paper-Scis
 
 ## 🔗 Live Preview
 
-👉 [Play Now](https://parmesh55.github.io/stone-paper-scissors/)
+👉 [Play Now](https://parmesh55.github.io/Stone-Paper-Scissors/)
 
 ## 🎮 Features
 
