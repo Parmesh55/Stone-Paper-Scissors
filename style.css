@@ -11,6 +11,7 @@ body {
   background: linear-gradient(to right, #061b29, #063142);
   color: #fff;
   padding: 1rem;
+  overflow-x: hidden;
 }
 
 /* Header */
@@ -57,6 +58,12 @@ img {
   object-fit: cover;
   border-radius: 50%;
   user-select: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  pointer-events: none;
 }
 
 /* Score Board */
@@ -143,5 +150,10 @@ img {
 
   .score p:first-child {
     font-size: 2.5rem;
+  }
+
+  .btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
   }
 }
