@@ -10,13 +10,14 @@ const newGameBtn = document.querySelector("#newgame-btn");
 
 const genCompChoice = () => {
   const options = ["rock", "paper", "scissors"];
-  return options[Math.floor(Math.random() * 3)];
+  const randIdx = Math.floor(Math.random() * 3);
+  return options[randIdx];
 };
 
 const drawGame = () => {
-  msg.innerText = "It's a Draw. Try again!";
-  msg.style.backgroundColor = "#1e2a38";
-  msg.className = "draw";
+  msg.innerText = "It's a Draw!";
+  msg.style.backgroundColor = "#001e3c";
+  msg.style.color = "#00ffff";
 };
 
 const showWinner = (userWin, userChoice, compChoice) => {
@@ -25,28 +26,29 @@ const showWinner = (userWin, userChoice, compChoice) => {
     userScorePara.innerText = userScore;
     msg.innerText = `You Win! ${userChoice.toUpperCase()} beats ${compChoice.toUpperCase()}`;
     msg.style.backgroundColor = "green";
-    msg.className = "win";
+    msg.style.color = "white";
   } else {
     compScore++;
     compScorePara.innerText = compScore;
     msg.innerText = `You Lost! ${compChoice.toUpperCase()} beats ${userChoice.toUpperCase()}`;
     msg.style.backgroundColor = "red";
-    msg.className = "lose";
+    msg.style.color = "white";
   }
 };
 
 const playGame = (userChoice) => {
   const compChoice = genCompChoice();
+
   if (userChoice === compChoice) {
     drawGame();
   } else {
-    let userWin = true;
-    if (userChoice === "rock") {
-      userWin = compChoice === "paper" ? false : true;
-    } else if (userChoice === "paper") {
-      userWin = compChoice === "scissors" ? false : true;
-    } else {
-      userWin = compChoice === "rock" ? false : true;
+    let userWin = false;
+    if (
+      (userChoice === "rock" && compChoice === "scissors") ||
+      (userChoice === "paper" && compChoice === "rock") ||
+      (userChoice === "scissors" && compChoice === "paper")
+    ) {
+      userWin = true;
     }
     showWinner(userWin, userChoice, compChoice);
   }
@@ -54,7 +56,7 @@ const playGame = (userChoice) => {
 
 choices.forEach((choice) => {
   choice.addEventListener("click", () => {
-    const userChoice = choice.id;
+    const userChoice = choice.getAttribute("id");
     playGame(userChoice);
   });
 });
@@ -64,13 +66,13 @@ resetBtn.addEventListener("click", () => {
   compScore = 0;
   userScorePara.innerText = 0;
   compScorePara.innerText = 0;
-  msg.innerText = "Scores reset. Play your move";
-  msg.style.backgroundColor = "#1e2a38";
-  msg.className = "";
+  msg.innerText = "Play your move";
+  msg.style.backgroundColor = "#001e3c";
+  msg.style.color = "#00ffff";
 });
 
 newGameBtn.addEventListener("click", () => {
   msg.innerText = "Play your move";
-  msg.style.backgroundColor = "#1e2a38";
-  msg.className = "";
+  msg.style.backgroundColor = "#001e3c";
+  msg.style.color = "#00ffff";
 });
